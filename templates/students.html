@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Student Directory</h2>
+    
+    <p>Total Students: <strong>{{ students|length }}</strong></p>
+
+    <ul>
+        {% for student in students %}
+            <li><strong>{{ student.full_name }}</strong> ({{ student.email }})</li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+    <h3>Add a New Student</h3>
+    <form action="{{ url_for('add_student') }}" method="POST">
+        <div class="form-group">
+            <label for="name">Full Name:</label><br>
+            <input type="text" id="name" name="name" placeholder="Full Name" required size="30">
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address:</label><br>
+            <input type="email" id="email" name="email" placeholder="Email Address" required size="30">
+        </div>
+        <div style="margin-top: 10px;">
+            <button type="submit" class="btn">Add Student</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

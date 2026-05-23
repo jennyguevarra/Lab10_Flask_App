@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity 10 Flask Web App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="content-wrapper">
+        <header>
+            <img src="{{ url_for('static', filename='images/TUP.png') }}" alt="TUP Logo">
+            <h1>Activity 10 Flask Web App</h1>
+        </header>
+
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('students') }}">Students</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </nav>
+
+        <main>
+            {% if current_user.is_authenticated %}
+              <p style="text-align: right; padding-right: 20px;">Welcome, <strong>{{ current_user.email }}</strong></p>
+            {% endif %}
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for msg in messages %}
+                        <p style="color: red; font-weight: bold; text-align: center;">{{ msg }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            {% block content %}{% endblock %}
+        </main>
+    </div> <footer>
+        © 2025 Flask Activity - Laboratory 10
+    </footer>
+</body>
+</html>

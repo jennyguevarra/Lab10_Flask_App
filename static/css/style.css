@@ -1,0 +1,109 @@
+/* --- Root Layout for Sticky Footer --- */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: #FFFFFF;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #2D3436; 
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column; /* Vertical stack */
+}
+
+.content-wrapper {
+    flex: 1 0 auto; /* Grows to push footer down */
+}
+
+/* --- Header --- */
+header {
+    padding: 2rem;
+    background-color: #F8F9FA;
+    text-align: center;
+    border-bottom: 2px solid #A02D23;
+}
+
+header h1 {
+    color: #2C3E50;
+    margin-top: 10px;
+}
+
+header img {
+    width: 90px;
+    filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.1)); 
+}
+
+/* --- Navigation --- */
+nav {
+    background-color: #2C3E50;
+    padding: 15px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+}
+
+/* Observation 16: Hover Effect (Orange & Underline) */
+nav a:hover {
+    color: #FFA500; 
+    text-decoration: underline;
+}
+
+/* --- Content --- */
+main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Observation 20: Form Spacing */
+form div {
+    margin-bottom: 15px; 
+    padding: 5px 0;
+}
+
+input[type="email"], input[type="password"], input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* --- Buttons --- */
+.btn, button {
+    background-color: #A02D23; 
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px; 
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Observation 8: Primary Button Style (Blue) */
+.btn-primary {
+    background-color: #007bff !important;
+}
+
+/* --- Sticky Footer (Observation 7) --- */
+footer {
+    flex-shrink: 0; /* Prevents squashing */
+    text-align: center;
+    padding: 20px;
+    background-color: #F8F9FA;
+    border-top: 1px solid #eee;
+    color: #636e72;
+    font-size: 0.8em;
+}
